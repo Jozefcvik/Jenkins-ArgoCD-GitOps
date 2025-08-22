@@ -84,6 +84,18 @@ http://AWS_EC2_public_IP:8080/
         - Docker Pipeline
         - NodeJS
         - Kubernetes
+- docker restart Jenkins
+- login again to Jenkins UI
+```sh
+docker exec -it jenkins bash
+```
+```sh
+apt-get update -y
+```
+```sh
+apt-get install iputils-ping npm -y
+```
+
 
 ## ++++++++++++++++++++++++++++++++++++++++++++++++++
 ## INFOSSSS
