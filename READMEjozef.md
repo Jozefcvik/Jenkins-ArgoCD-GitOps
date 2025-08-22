@@ -53,11 +53,21 @@ minikube status
 kubectl get nodes
 ```
 ```sh
-kubectl cluster-info
+kubectl cluster-info 
 ```
 
 ### Set Up Jenkins container
-
+```sh
+docker run -d --name jenkins \
+-p 8080:8080 \
+-p 50000:50000 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $(which docker):/usr/bin/docker \
+-u root \
+-e DOCKER_GID=$(getent group docker | cut -d: -f3) \
+--network minikube \
+jenkins/jenkins:lts
+```
 
 
 ## ++++++++++++++++++++++++++++++++++++++++++++++++++
