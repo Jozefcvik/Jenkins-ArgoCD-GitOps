@@ -1,10 +1,3 @@
-## GITHUB - Generate API key for EC2 (clone GIT repo) in Github
-- Login to Github
-  - create Personal Acces tokens (Tokens Classic)
-      - repo
-      - admin
-      - workflow
-        
 ## AWS - EC2 - Create EC2 Instance & Set up Environment
 
 ### Log in to Ubuntu EC2 Instance:
@@ -102,3 +95,21 @@ docker restart jenkins
 docker restart jenkins
 ```
 
+## Set Credentials Between GitHub  and Jenkins
+### GITHUB - Generate API key for EC2 (clone GIT repo) in Github
+- Login to Github
+  - create Personal Acces tokens (Tokens Classic)
+      - repo
+      - admin
+      - workflow
+
+### Jenkins
+- Manage Jenkins
+  - Credentials
+    - Global Credentials
+      - Add Credentials
+        - Kind - Username with Password
+        - Username - GitHub Username
+        - Password - Generated Token Password from GitHub
+        - ID - GitOps-token-GitHub
+        - Description - GitOps-token-GitHub
