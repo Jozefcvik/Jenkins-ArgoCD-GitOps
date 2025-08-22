@@ -102,32 +102,3 @@ docker restart jenkins
 docker restart jenkins
 ```
 
-
-## ++++++++++++++++++++++++++++++++++++++++++++++++++
-## INFOSSSS
-
-
-## (Alternatively) Using ArgoCD CLI to Create New Application  
-```sh
-argocd app create my-app \
-  --repo https://github.com/your-username/your-repo.git \
-  --path manifest \
-  --dest-server https://kubernetes.default.svc \
-  --dest-namespace argocd
-```
-
-## Create Environment Variables in GitHub
-1. Click on the GitOps Repository and click on "Settings" 
-2. Click on "Secrets and variables" and select "Actions"
-3. Under Repository secrets, click on "New repository secret"
-   
-        Name: DOCKERHUB_USERNAME
-        Secret: <dockerhub username>
-        Add secret
-
-        Name: DOCKERHUB_TOKEN
-        Secret: <dockerhub token here>
-        Add secret
-
-
-
