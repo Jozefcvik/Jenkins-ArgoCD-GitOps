@@ -118,12 +118,12 @@ docker restart jenkins
 ### Pipeline
 - Jenkins UI
 - New Item
-- Name - GitOps
-- Description - GitOps
-- Pipeline - Pipeline script from SCM
-  - Git
-  - Repository URL - https://github_link
-  - Credentials - GitOps-token-GitHub
-  - Branch Specifier - */main
-  - Scripth Path - Jenkinsfile
-  - Save
+  - Name - GitOps
+  - Description - GitOps
+  - Pipeline - Pipeline script from SCM
+    - Git
+    - Repository URL - https://github_link
+    - Credentials - GitOps-token-GitHub
+    - Branch Specifier - */main
+    - Scripth Path - Jenkinsfile
+    - Save
