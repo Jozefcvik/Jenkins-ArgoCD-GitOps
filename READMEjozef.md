@@ -68,7 +68,7 @@ docker run -d --name jenkins \
 --network minikube \
 jenkins/jenkins:lts
 ```
-### Login to Jenkins
+### Login to Jenkins UI
 http://AWS_EC2_public_IP:8080/
 
 - Initial Jenkins Password
@@ -84,16 +84,22 @@ http://AWS_EC2_public_IP:8080/
         - Docker Pipeline
         - NodeJS
         - Kubernetes
-- docker restart Jenkins
+```sh
+docker restart jenkins
+```
 - login again to Jenkins UI
+- Configure Jenkins Container
+  ```sh
+  docker exec -it jenkins bash
+  ```
+  ```sh
+  apt-get update -y
+  ```
+  ```sh
+  apt-get install iputils-ping npm -y
+  ```
 ```sh
-docker exec -it jenkins bash
-```
-```sh
-apt-get update -y
-```
-```sh
-apt-get install iputils-ping npm -y
+docker restart jenkins
 ```
 
 
