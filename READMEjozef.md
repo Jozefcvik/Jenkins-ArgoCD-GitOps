@@ -68,7 +68,22 @@ docker run -d --name jenkins \
 --network minikube \
 jenkins/jenkins:lts
 ```
+### Login to Jenkins
+http://AWS_EC2_public_IP:8080/
 
+- Initial Jenkins Password
+  ```sh
+  docker logs jenkins
+  ```
+- Install all recomended plugins
+- Create First Admin User
+- Manage Jenkins
+    - Plugins
+      - Available Plugins
+        - Docker
+        - Docker Pipeline
+        - NodeJS
+        - Kubernetes
 
 ## ++++++++++++++++++++++++++++++++++++++++++++++++++
 ## INFOSSSS
