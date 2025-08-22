@@ -113,3 +113,15 @@ docker restart jenkins
         - Password - Generated Token Password from GitHub
         - ID - GitOps-token-GitHub
         - Description - GitOps-token-GitHub
+
+## Create a new pipeline
+### Pipeline
+- Name - GitOps
+- Description - GitOps
+- Pipeline - Pipeline script from SCM
+  - Git
+  - Repository URL - https://github_link
+  - Credentials - GitOps-token-GitHub
+  - Branch Specifier - */main
+  - Scripth Path - Jenkinsfile
+  - Save
