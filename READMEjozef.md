@@ -116,6 +116,8 @@ docker restart jenkins
 
 ## Create a new pipeline
 ### Pipeline
+- Jenkins UI
+- New Item
 - Name - GitOps
 - Description - GitOps
 - Pipeline - Pipeline script from SCM
