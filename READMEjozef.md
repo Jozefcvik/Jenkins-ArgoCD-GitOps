@@ -126,4 +126,18 @@ docker restart jenkins
     - Credentials - GitOps-token-GitHub
     - Branch Specifier - */main
     - Scripth Path - Jenkinsfile
-    - Save
+    - Pipeline Syntax
+      - git: Git
+      - Repository URL - https://github_link
+      - Branch - main
+      - Credentials - GitOps-token-GitHub
+      - Generate Pipeline Script
+    - Select and copy generated syntax
+    - Copy it to Jenkinsfile in Github
+      ```sh
+      stage ('Checkout Github'){
+        steps {
+        GENERATED CODE FROM PIPELINE SYNTAX - git branch: 'main', credentialsId: 'GitOps-token-GitHub', url: 'https://github.com/Jozefcvik/Jenkins-ArgoCD-GitOps.git'
+        }
+      }    
+      ```    
