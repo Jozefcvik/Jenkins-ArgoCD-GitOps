@@ -227,8 +227,11 @@ exit
 	```sh
 	stage('Trivy Scan'){
 			  steps {
-				      sh 'trivy image --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+				      sh 'trivy image --severity HIGH,CRITICAL --no-progress --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
 	${DOCKER_HUB_REPO}:latest'
+ 
+ trivy image --severity HIGH,CRITICAL --no-progress --format table -o $REPORT_FILE $IMAGE_NAME
+                '''
 			  }
 	}
 	```
@@ -236,7 +239,7 @@ exit
 	```sh
 	stage('Trivy Scan'){
 			  steps {
-				      sh 'trivy image --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+				      sh 'trivy image --severity HIGH,CRITICAL --skip-update --no-progress --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
 			  }
 	}
 	```
