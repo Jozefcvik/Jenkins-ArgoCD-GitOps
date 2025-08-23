@@ -328,4 +328,21 @@ kubectl port-forward --address 0.0.0.0 service/argocd-server 30007:80 -n argocd
 	       	```sh
 			kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d && echo
 			```
+## Configure Kubernetes Credentials in Jenkins
+### 1. Kubernetes Credentials
+```sh
+cat .kube/config
+```
+- copy it and create a new local file kubeconfig
+- make changes
+	- change -  certificate-authority:  >  certificate-authority-data:
+  	- change -  client-certificate:  >  client-certificate-data:
+  	- change -  client-key:  >  client-key-data:
+	- copy from the file path - certificate-authority-data (/home/ubuntu/.minikube/ca.crt)
+ 		- from aws ec2 - cat /home/ubuntu/.minikube/ca.crt | base64 -w 0; echo
+ 		- copy it direct to the created file
+  		- certificate-authority-data: copied text
+    - make the same steps for:
+    	- client-certificate-data:
+     	- client-key-data:
 
