@@ -155,7 +155,7 @@ docker restart jenkins
 pipeline {
     agent any
     tools {
-            nodeJS 'NodeJS'
+            nodejs 'NodeJS'
     }
 ```
 ```sh
