@@ -292,5 +292,29 @@ stage('Push Image to DockerHub'){
 	}
 }
 ```
-
-
+## Installing and Configuring ArgoCD
+### Minikube kubectl Create a New Namespace
+```sh
+kubectl create ns argocd
+```
+```sh
+kubectl get namespace
+```
+```sh
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+```sh
+kubectl get all -n argocd
+```
+```sh
+kubectl get service -n argocd
+```
+```sh
+kubectl edit service argocd-server -n argocd
+```
+	- type: CLusterIP  >   NodePort
+ 	- name: http
+  	- add - nodePort: 30007
+  	- name: https
+	- add - nodePort: 30008
+ 	- Save - Esc - wq!
