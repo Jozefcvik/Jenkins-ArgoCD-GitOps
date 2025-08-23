@@ -400,7 +400,7 @@ cat .kube/config
 					}
 				}
             ```
-#### 4. ArgoCD UI 
+### 4. ArgoCD UI 
 - Connect Repo
 	- Settings
  		- + Connect Repo
@@ -422,3 +422,8 @@ cat .kube/config
   	- Cluster URL - https://kubernetes.default.svc
   	- Namespace - argocd
   	- Create
+
+## Connect to Deployed GemsApp
+```sh
+kubectl port-forward --address 0.0.0.0 service/gemsapp-service 30036:3000 -n argocd
+```
