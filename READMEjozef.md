@@ -389,7 +389,7 @@ cat .kube/config
 						script {
 							kubeconfig(credentialsId: 'kubeconfig', serverUrl: 'https://192.168.49.2:8443') {
 		    						sh '''
-								argocd login 44.211.76.138:31559 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
+								argocd login awsEC2publicIP:30007 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
 								argocd app sync argocdjenkins
 								'''
 							}	
@@ -397,4 +397,25 @@ cat .kube/config
 					}
 				}
             ```
-            
+#### 4. ArgoCD UI 
+- Connect Repo
+	- Settings
+ 		- + Connect Repo
+     		- via HTTPS
+       		- Type - git
+         	- Project - default 
+			- Repository URL - github https link
+     		- we don´t need to put username and password
+       		- Connect
+- Create New App in ArgoCD
+	- Application Name - argocdjenkins
+ 	- Project Name - default
+  	- Sync Policy - Automatic
+  	- Prune Resources - YES
+  	- Self Heal - YES
+  	- Repository URL - github https link
+  	- Revision - main
+  	- Path - manifests
+  	- Cluster URL - https://kubernetes.default.svc
+  	- Namespace - argocd
+  	- Create
