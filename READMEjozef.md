@@ -271,6 +271,16 @@ environment {
 }
 ```
 ```sh
+stage('Build Docker Image'){
+	steps {
+		script {
+			echo 'building docker image...'
+			dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")			// define here docker Image
+		}
+	}
+}
+```
+```sh
 stage('Push Image to DockerHub'){
 	steps {
 		script {
