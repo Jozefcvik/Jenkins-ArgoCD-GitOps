@@ -10,6 +10,7 @@ export default function Home() {
       <p>{t('lorem01')}</p>
       <p>{t('lorem02')}</p>
       <p>{t('lorem03')}</p>
+      <p>24th August 2025 from Jenkins</p>
       <nav>
         <NavLink to="gems">{t('currentGemsOffer')}</NavLink>
       </nav>
