@@ -219,7 +219,7 @@ trivy -v
 exit
 ```
 ### 2. Change GitHub Jenkinsfile
-#### Start only once taht Trivy Datatabse will be downloaded
+#### Start only once that Trivy Datatabse will downloaded VULNERABILITY DATABASE
 	```sh
 	stage('Trivy Scan'){
 			  steps {
@@ -228,7 +228,7 @@ exit
 			  }
 	}
 	```
-#### But then we don´t need to always in development/test production always download Trivy Database Therefore we will use this script
+#### But then we don´t need to always in development/test production download Trivy VULNERABILITY DATABASE, therefore we will use this script
 	```sh
 	stage('Trivy Scan'){
 			  steps {
