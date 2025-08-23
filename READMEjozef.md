@@ -155,13 +155,13 @@ docker restart jenkins
 pipeline {
     agent any
     tools {
-        nodeJS 'NodeJS'
+            nodeJS 'NodeJS'
     }
 ```
 ```sh
 stage ('Install node dependencies'){
     steps {
-        sh 'npm install'
+            sh 'npm install'
     }
 }
 ```
