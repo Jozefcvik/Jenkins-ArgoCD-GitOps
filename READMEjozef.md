@@ -96,14 +96,14 @@ docker restart jenkins
 ```
 
 ## Set Credentials Between GitHub  and Jenkins
-### GITHUB - Generate API key for EC2 (clone GIT repo) in Github
+### 1. GITHUB - Generate API key for EC2 (clone GIT repo) in Github
 - Login to Github
   - create Personal Acces tokens (Tokens Classic)
       - repo
       - admin
       - workflow
 
-### Jenkins
+### 2. Jenkins
 - Manage Jenkins
   - Credentials
     - Global Credentials
@@ -142,7 +142,7 @@ docker restart jenkins
       }    
       ```    
 ## Install NPM dependencies
-### Jenkins UI
+### 1. Jenkins UI
 - Node Plugin has been already installed (Jenkins UI - Manage Jenkins)
 - Manage Jenkins
   - Tools
@@ -151,7 +151,7 @@ docker restart jenkins
       - Install Automatically
       - Apply
       - Save
-### Change GitHub Jenkinsfile
+### 2. Change GitHub Jenkinsfile
 ```sh
 pipeline {
     agent any
@@ -167,7 +167,7 @@ stage ('Install node dependencies'){
 }
 ```
 ## Build Docker Image
-### Jenkins UI
+### 1. Jenkins UI
 - Docker Plugin has been already installed (Jenkins UI - Manage Jenkins)
 - Manage Jenkins
   - Tools
@@ -178,12 +178,12 @@ stage ('Install node dependencies'){
         - Docker version - latest
         - Apply
         - Save
-  ### Generate Pipeline Syntax
-  #### Global Variable Reference (Menu on left Side)
+### 2. Generate Pipeline Syntax
+#### Global Variable Reference (Menu on left Side)
   - check which command should be used for docker build
   - docker
      - build 
-  ### Change GitHub Jenkinsfile
+### 3. Change GitHub Jenkinsfile
   ```sh
   environment {
       DOCKER_HUB_REPO = 'jozefcvik/jenkinsargocdgitops'
@@ -200,7 +200,7 @@ stage ('Install node dependencies'){
   		}
   ```
 ## Scan Docker Image with Trivy
-### Trivy installation in the jenkins docker
+### 1. Trivy installation in the jenkins docker
 ```sh
 docker exec -it jenkins /bin/bash
 ```
@@ -212,15 +212,15 @@ https://trivy.dev/v0.65/getting-started/installation/
 trivy -v
 ```
 
-### Change GitHub Jenkinsfile
-  ```sh
-	stage('Trivy Scan'){
-			  steps {
-				      //sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
-				      sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
-			  }
-	}
-  ```
+### 2. Change GitHub Jenkinsfile
+```sh
+stage('Trivy Scan'){
+		  steps {
+			      //sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+			      sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+		  }
+}
+```
 
 
 
