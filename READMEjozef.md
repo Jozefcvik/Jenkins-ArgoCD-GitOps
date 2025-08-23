@@ -312,9 +312,20 @@ kubectl get service -n argocd
 ```sh
 kubectl edit service argocd-server -n argocd
 ```
-	- type: CLusterIP  >   NodePort
- 	- name: http
-  	- add - nodePort: 30007
-  	- name: https
-	- add - nodePort: 30008
- 	- Save - Esc - wq!
+		- type: CLusterIP  >   NodePort
+	 	- name: http
+	  	- add - nodePort: 30007
+	  	- name: https
+		- add - nodePort: 30008
+	 	- Save - Esc - wq!
+```sh
+kubectl port-forward --address 0.0.0.0 service/argocd-server 30007:80 -n argocd
+```
+- Open ArgoCD UI
+	- aws ec2 http://publicIP:30007
+ 		- username - admin
+   		- password - initial password
+       	```sh
+		kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d && echo
+		```
+
