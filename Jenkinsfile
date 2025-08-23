@@ -11,7 +11,7 @@ pipeline {
 		}		
 		stage('Install node dependencies'){
 			steps {
-				echo 'installing node dependencies...'
+				sh 'npm install'
 			}
 		}
 		stage('Build Docker Image'){
