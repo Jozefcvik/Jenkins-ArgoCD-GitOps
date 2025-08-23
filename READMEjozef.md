@@ -243,5 +243,27 @@ exit
 			  }
 	}
 	```
+## PUSH Docker image to Docker Hub
+### 1. Create Personal Access Token in Docker Hub
+- Docker Account Settings
+- Personal Access Token
+- Generate new token
+	- access token description - gitops-dockerhub
+ 	- Expiration date - 30 days
+  	- Access permissions - Read, Write, Delete
+  	- Generate
+### 2. Set Docker Hub Personal Access Token in Jenkins UI
+- Manage Jenkins
+	- Credentials
+ 		- Global
+   			- Add credential
+				- Kind - Username with Password
+      			- Username - jozefcvik
+         		- Password - Generated Personal Access Token Docker
+           		- ID - gitops-dockerhub
+             	- Description - gitops-dockerhub
+                - Create
+### 3. Update GitHub Jenkinsfile
+
 
 
