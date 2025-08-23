@@ -376,7 +376,7 @@ cat .kube/config
 	- Sample Step
  		- kubeconfig: Setup Kubernetes CLI (kubectl)
    			- Kubernetes server endpoint
-      			- aws ec2 cmnd - kubectl cluster-info dump
+      			- aws ec2 cmnd - kubectl cluster-info
          			- copy from the export:
             			 - https://xxxxx:8443
             - We don´t need to put Certificate and certificate authority
