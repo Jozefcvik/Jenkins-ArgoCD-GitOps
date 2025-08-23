@@ -190,14 +190,18 @@ stage ('Install node dependencies'){
   }
   ```
   ```sh
-    stage('Build Docker Image'){
+  stage('Build Docker Image'){
   			  steps {
-  				      script {
-  					        echo 'building docker...'
-                    docker.build("${DOCKER_HUB_REPO}:latest")
-  				      }
-            }
-  		}
+  				      	script {
+  					    	    echo 'building docker...'
+                    			docker.build("${DOCKER_HUB_REPO}:latest")
+  				      	}
+						script {
+								echo 'deleting building docker...'
+                    			sh 'docker images -f "dangling=true"'
+                		}
+            	}
+  }
   ```
 ## Scan Docker Image with Trivy
 ### 1. Trivy installation in the jenkins docker
