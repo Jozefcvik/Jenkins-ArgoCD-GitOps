@@ -1,21 +1,36 @@
-# Use an official alpine nodeJS image as the base image
-FROM node:alpine
+# 1. Build Stage
+FROM node:alpine AS build
 
-# Set working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install only production nodeJS dependencies in Docker Image
-RUN npm install --only=production
+# Install dependencies
+RUN npm install
 
-# Copy the rest of the application code into the container
+# Copy the rest of the app
 COPY . .
 
-# Expose the app on a port
+# Build the app for production
+RUN npm run build
+
+
+# 2. Production Stage
+FROM node:alpine
+
+# Install 'serve' to serve the production build
+RUN npm install -g serve
+
+# Set working directory
+WORKDIR /app
+
+# Copy the build folder from previous stage
+COPY --from=build /app/build ./build
+
+# Expose port (adjust if needed)
 EXPOSE 3000
 
-# Command that runs the app
-CMD ["npm", "start"]
-
+# Start the app using serve
+CMD ["serve", "-s", "build", "-l", "3000"]

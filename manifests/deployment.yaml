@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-app-deployment
+  name: gemsapp-deployment
+  namespace: gemsapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: node-app
+      app: gemsapp
   template:
     metadata:
       labels:
-        app: node-app
+        app: gemsapp
     spec:
       containers:
-      - name: node-app
-        image: iquantc/iquant-app:latest
+      - name: gemsapp-container
+        image: jozefcvik/gemsappfrontend:latest
         ports:
-        - containerPort: 3000
-
+        - containerPort: 3000  # change if your app runs on a different port
