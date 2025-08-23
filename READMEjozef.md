@@ -219,14 +219,22 @@ trivy -v
 exit
 ```
 ### 2. Change GitHub Jenkinsfile
-```sh
-stage('Trivy Scan'){
-		  steps {
-			      //sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
-			      sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
-		  }
-}
-```
-
+#### Start only once taht Trivy Datatabse will be downloaded
+	```sh
+	stage('Trivy Scan'){
+			  steps {
+				      sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+	${DOCKER_HUB_REPO}:latest'
+			  }
+	}
+	```
+#### But then we don´t need to always in development/test production always download Trivy Database Therefore we will use this script
+	```sh
+	stage('Trivy Scan'){
+			  steps {
+				      sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+			  }
+	}
+	```
 
 
