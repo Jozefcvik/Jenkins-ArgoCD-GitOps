@@ -393,7 +393,7 @@ cat .kube/config
 							kubeconfig(credentialsId: 'kubeconfig', serverUrl: 'https://192.168.49.2:8443') {
 		    						sh '''
 								argocd login awsEC2publicIP:30007 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
-								argocd app sync argocdjenkins
+								argocd app sync argocdjenkins --force
 								'''
 							}	
 						}
