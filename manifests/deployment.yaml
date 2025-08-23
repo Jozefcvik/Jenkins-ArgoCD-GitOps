@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: gemsapp-container
-        image: jozefcvik/gemsappfrontend:latest
+        image: jozefcvik/jenkinsargocdgitops:latest
         ports:
         - containerPort: 3000  # change if your app runs on a different port
