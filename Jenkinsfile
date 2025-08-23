@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	tools {
-        nodeJS 'NodeJS'
+        	nodeJS 'NodeJS'
     }
 	stages {
 		stage('Checkout Github'){
@@ -11,7 +11,7 @@ pipeline {
 		}		
 		stage('Install node dependencies'){
 			steps {
-				sh 'npm install'
+					sh 'npm install'
 			}
 		}
 		stage('Build Docker Image'){
