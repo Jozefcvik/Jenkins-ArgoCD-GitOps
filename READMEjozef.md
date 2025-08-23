@@ -143,6 +143,7 @@ docker restart jenkins
       ```    
 ## Install NPM dependencies
 ### Jenkins UI
+- Node Plugin has been already installed (Jenkins UI - Manage Jenkins)
 - Manage Jenkins
   - Tools
     - NodeJS
@@ -165,4 +166,25 @@ stage ('Install node dependencies'){
     }
 }
 ```
-    
+## Build Docker Image
+### Jenkins UI
+- Docker Plugin has been already installed (Jenkins UI - Manage Jenkins)
+- Manage Jenkins
+  - Tools
+    - Docker Installation
+      - Name - Docker
+      - Install automatically
+        - Download from docker.com
+        - Docker version - latest
+        - Apply
+        - Save
+  ### Generate Pipeline Syntax
+  #### Global Variable Reference (Menu on left Side)
+  - check which command should be used for docker build
+  - docker
+   - build 
+  ### Change GitHub Jenkinsfile
+  - 
+  
+
+
