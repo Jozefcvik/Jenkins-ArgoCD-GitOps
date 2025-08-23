@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	tools {
+        nodeJS 'NodeJS'
+    }
 	stages {
 		stage('Checkout Github'){
 			steps {
