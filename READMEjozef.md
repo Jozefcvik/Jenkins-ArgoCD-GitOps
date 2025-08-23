@@ -208,6 +208,10 @@ https://trivy.dev/v0.65/getting-started/installation/
   ```sh
   curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.65.0
   ```
+If you install the script in the jenkins container you need to delete " sudo "
+  ```sh
+  curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.65.0
+  ```
 ```sh
 trivy -v
 ```
