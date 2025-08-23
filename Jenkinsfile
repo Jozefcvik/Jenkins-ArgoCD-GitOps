@@ -3,6 +3,9 @@ pipeline {
 	tools {
         	nodejs 'NodeJS'
     }
+	environment {
+    		DOCKER_HUB_REPO = 'jozefcvik/jenkinsargocdgitops'
+	}
 	stages {
 		stage('Checkout Github'){
 			steps {
@@ -18,6 +21,7 @@ pipeline {
 			steps {
 				script {
 					echo 'building docker...'
+					docker.build("${DOCKER_HUB_REPO}:latest")
 				}
 			}
 		}
