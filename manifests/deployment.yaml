@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: gemsapp-deployment
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: gemsapp-container=jozefcvik/jenkinsargocdgitops
+    argocd-image-updater.argoproj.io/gemsapp-container.update-strategy: latest
 spec:
   replicas: 2
   selector:
