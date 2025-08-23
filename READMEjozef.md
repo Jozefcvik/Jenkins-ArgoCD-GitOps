@@ -340,9 +340,46 @@ cat .kube/config
   	- change -  client-key:  >  client-key-data:
 	- copy from the file path - certificate-authority-data (/home/ubuntu/.minikube/ca.crt)
  		- from aws ec2 - cat /home/ubuntu/.minikube/ca.crt | base64 -w 0; echo
- 		- copy it direct to the created file
-  		- certificate-authority-data: copied text
+ 		- copy it direct to the created file kubeconfig
+  			- certificate-authority-data: copied text (delete - (/home/ubuntu/.minikube/ca.crt))
     - make the same steps for:
     	- client-certificate-data:
      	- client-key-data:
-
+### 2. Jenkins UI
+- Manage Jenkins
+	- Credentials
+ 		- Global
+   			-  Add Credentials
+      			- Kind - Secret file
+         		- Browse - created kubeconfig local file
+           		- ID - kubeconfig
+             	- Description - kubeconfig
+              	- Create
+### 3. Update GitHub Jenkins File
+#### Install ArgoCD
+```sh
+		stage('Install ArgoCD CLI'){
+			steps {
+				sh '''
+				echo 'installing ArgoCD cli...'
+				curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+				chmod +x /usr/local/bin/argocd
+				'''
+			}
+		}
+```
+#### Install kubectl
+- Pipeline Syntax
+	- Sample Step
+ 		- kubeconfig: Setup Kubernetes CLI (kubectl)
+   			- Kubernetes server endpoint
+      			- aws ec2 cmnd - kubectl cluster-info dump
+         			- copy from the export:
+            			 - https://xxxxx:8443
+            - We don´t need to put Certificate and certificate authority
+            	- we set already credentials file for it
+            - Credentials - kubeconfig (kubeconfig)
+            - Generate Pipeline Script
+            	- Export something like:
+             		- kubeconfig(credentialosId: 'kubeconfig', serverUrl: 'https://xxxx:8443') {//some block}
+               - copy it to Jenkinsfile in Github
