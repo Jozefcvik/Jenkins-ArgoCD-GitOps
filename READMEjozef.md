@@ -325,7 +325,7 @@ kubectl port-forward --address 0.0.0.0 service/argocd-server 30007:80 -n argocd
 	- aws ec2 http://publicIP:30007
  		- username - admin
    		- password - initial password
-       	```sh
-		kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d && echo
-		```
+	       	```sh
+			kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d && echo
+			```
 
