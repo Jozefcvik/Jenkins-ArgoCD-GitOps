@@ -5,6 +5,7 @@ pipeline {
     }
 	environment {
     		DOCKER_HUB_REPO = 'jozefcvik/jenkinsargocdgitops'
+			DOCKER_HUB_CREDENTIALS_ID = 'GitOps-token-DockerHub'
 	}
 	stages {
 		stage('Checkout Github'){
@@ -21,7 +22,7 @@ pipeline {
 			steps {
 				script {
 					echo 'building docker...'
-					docker.build("${DOCKER_HUB_REPO}:latest")
+					dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
 				}
 				script {
 					echo 'deleting building docker...'
@@ -42,6 +43,9 @@ pipeline {
 			steps {
 				script {
 					echo 'pushing docker to DockerHub...'
+					docker.withRegistry('https://registry.hub.docker.com', "${DOCKER_HUB_CREDENTIALS_ID}"){
+						dockerImage.push('latest')
+						}
 					}
 				}
 			}
