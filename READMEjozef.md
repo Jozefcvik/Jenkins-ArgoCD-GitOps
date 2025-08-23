@@ -68,7 +68,7 @@ http://AWS_EC2_public_IP:8080/
   ```sh
   docker logs jenkins
   ```
-- Install all recomended plugins
+- Install suggested plugins
 - Create First Admin User
 - Manage Jenkins
     - Plugins
