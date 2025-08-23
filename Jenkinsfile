@@ -22,7 +22,7 @@ pipeline {
 			steps {
 				script {
 					echo 'building docker...'
-					dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
+					dockerImage = docker.build("${DOCKER_HUB_REPO}", "--tag ${DOCKER_HUB_REPO}:latest --tag ${DOCKER_HUB_REPO}:${env.BUILD_NUMBER} .")
 				}
 				script {
 					echo 'deleting building docker...'
@@ -45,6 +45,7 @@ pipeline {
 					echo 'pushing docker to DockerHub...'
 					docker.withRegistry('https://registry.hub.docker.com', "${DOCKER_HUB_CREDENTIALS_ID}"){
 						dockerImage.push('latest')
+						dockerImage.push(${env.BUILD_NUMBER})
 						}
 					}
 				}
