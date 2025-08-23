@@ -199,6 +199,28 @@ stage ('Install node dependencies'){
             }
   		}
   ```
-  
+## Scan Docker Image with Trivy
+### Trivy installation in the jenkins docker
+```sh
+docker exec -it jenkins /bin/bash
+```
+https://trivy.dev/v0.65/getting-started/installation/
+  ```sh
+  curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.65.0
+  ```
+```sh
+trivy -v
+```
+
+### Change GitHub Jenkinsfile
+  ```sh
+	stage('Trivy Scan'){
+			  steps {
+				      //sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+				      sh 'trivy --severity HIGH,CRITICAL --skip-update --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
+			  }
+	}
+  ```
+
 
 
