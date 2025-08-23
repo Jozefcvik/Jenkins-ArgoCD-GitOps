@@ -211,7 +211,9 @@ https://trivy.dev/v0.65/getting-started/installation/
 ```sh
 trivy -v
 ```
-
+```sh
+exit
+```
 ### 2. Change GitHub Jenkinsfile
 ```sh
 stage('Trivy Scan'){
