@@ -141,3 +141,13 @@ docker restart jenkins
         }
       }    
       ```    
+## Install NPM dependencies
+### Jenkins UI
+- Manage Jenkins
+  - Tools
+    - NodeJS
+      - Name - NodeJS  
+      - Install Automatically
+      - Apply
+      - Save
+    
