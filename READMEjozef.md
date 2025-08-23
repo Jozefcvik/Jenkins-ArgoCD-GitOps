@@ -182,7 +182,7 @@ stage ('Install node dependencies'){
   #### Global Variable Reference (Menu on left Side)
   - check which command should be used for docker build
   - docker
-   - build 
+     - build 
   ### Change GitHub Jenkinsfile
   ```sh
   environment {
@@ -191,12 +191,12 @@ stage ('Install node dependencies'){
   ```
   ```sh
     stage('Build Docker Image'){
-  			steps {
-  				script {
-  					echo 'building docker...'
-            docker.build("${DOCKER_HUB_REPO}:latest")
-  				}
-  			}
+  			  steps {
+  				      script {
+  					        echo 'building docker...'
+                    docker.build("${DOCKER_HUB_REPO}:latest")
+  				      }
+            }
   		}
   ```
   
