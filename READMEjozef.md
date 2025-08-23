@@ -150,4 +150,19 @@ docker restart jenkins
       - Install Automatically
       - Apply
       - Save
+### Change GitHub Jenkinsfile
+```sh
+pipeline {
+    agent any
+    tools {
+        nodeJS 'NodeJS'
+    }
+```
+```sh
+stage ('Install node dependencies'){
+    steps {
+        sh 'npm install'
+    }
+}
+```
     
