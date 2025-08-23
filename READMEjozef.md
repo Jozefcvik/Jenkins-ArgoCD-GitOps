@@ -184,7 +184,21 @@ stage ('Install node dependencies'){
   - docker
    - build 
   ### Change GitHub Jenkinsfile
-  - 
+  ```sh
+  environment {
+      DOCKER_HUB_REPO = 'jozefcvik/jenkinsargocdgitops'
+  }
+  ```
+  ```sh
+    stage('Build Docker Image'){
+  			steps {
+  				script {
+  					echo 'building docker...'
+            docker.build("${DOCKER_HUB_REPO}:latest")
+  				}
+  			}
+  		}
+  ```
   
 
 
